@@ -1,0 +1,8 @@
+Dominio: www.wappalyzer.com
+Descriptción: Este sitio web permite dentificar tecnologias usadas en un sitio web
+
+Dominio: www.ipinfo.io
+Descriptción: Este sitio web permite identificar la geolocalización un sitio web
+
+Dominio: shodan.io
+Descriptción: Este sitio web permite identificar los dispositivos que estan conectados a internet

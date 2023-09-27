@@ -1,0 +1,11 @@
+Whois es una base de datos que contiene nombres de información de resolución DNS. El protocolo DNS asocia un nombre de dominio a una(s) dirección(es) IP.
+
+Netcraft es una compañía de seguridad informática que realiza auditorías y presta servicios de consultoría. Poseen una herramienta pública que permite analizar rápidamente servidores y subdominios para identificar qué versiones de sistemas están utilizando y así identificar vulnerabilidades. netcraft.com
+
+Recong-NG es una suite que se compone de varios módulos y que permite recolectar información a partir de dominios, direcciones IP y sitios web.
+
+OpenVas: tiene una base de datos extensa con una colección de muchas vulnerabilidades de muchos sistemas o aplicaciones conocidos. OpenVas escanea el objetivo a atacar y luego compara con su propia base de datos para identificar posibles vulnerabilidades que estén disponibles.
+
+Nikto nos permite hacer un análisis e identificar las debilidades que puedan existir en los servicios web que estén corriendo en un servidor.
+
+Metasploit es un framework para desarrollo y prueba de exploits que aprovecha diferentes vulnerabilidades. Utiliza una gran base de datos donde encuentras payloads y exploits que puedes usar dependiendo de las debilidades encontradas.

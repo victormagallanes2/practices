@@ -1,0 +1,29 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+  {% include "sub_menu_configuration.html" %}
+    <div class="contenido">
+        <center>
+<h1>Cursos</h1>
+
+<p>
+    <a href="{% url "create_course" %}">Agregar curso</a>
+</p>
+
+<ul>
+    {% for course in object_list %}
+        <li>
+            <p>{{ course.name }}</p>
+            <p>
+                <a href="{% url "detail_course" course.id %}">Ver</a> | 
+                <a href="{% url "update_course" course.id %}">Editar</a> | 
+                <a href="{% url "delete_course" course.id %}">Borrar</a> 
+            </p>
+        </li>
+    {% endfor %}
+</ul>
+<center>
+{% include "_pagination.html" %}
+</center>
+</center>
+       </div>
+{% endblock %}

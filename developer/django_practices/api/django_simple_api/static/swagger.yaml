@@ -1,0 +1,1181 @@
+openapi: 3.0.0
+info:
+  title: My Api
+  version: "1.0.1-alpha-oas3"
+security:
+  - Basic: []
+paths:
+  '/token/':
+    post:
+      operationId: token_create
+      summary: "Token request for authentication"
+      description: ''
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  refresh:
+                    type: string
+                    example: 23efrtg67hgf3
+                  access:
+                    type: string
+                    example: xrt4hhdw123gh
+                  username:
+                    type: string
+                    example: user@example.com
+                  first_name:
+                    type: string
+                    example: Maria
+                  last_name:
+                    type: string
+                    example: Trueno
+                  picture:
+                    type: string
+                    example: avatar.jpg
+                  groups:
+                    type: array
+                    example:
+                      - 1
+                      - 2
+                  permissions:
+                    type: object
+                    properties:
+                      publication:
+                        items:
+                          type: array
+                          example:
+                            - get
+                            - post
+                      experience:
+                        items:
+                          type: array
+                          example:
+                            - get
+                            - post
+                            - put
+      tags:
+        - authentication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  type: string
+                  example: user@example.com
+                password:
+                  type: string
+                  example: pr42dxfgf
+
+        required: true
+    parameters: []
+  '/token/refresh/':
+    post:
+      operationId: token_refresh_create
+      summary: "refresh token"
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+      tags:
+        - authentication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+        required: true
+    parameters: []
+  '/request/change/password/':
+    post:
+      description: ''
+      summary: "Request to change password"
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  user:
+                    type: array
+                    example:
+                      - mail has been sent
+
+      requestBody:
+        content:
+          application/json:
+              schema:
+                properties:
+                  email:
+                    type: string
+                    example: user@example.com
+
+        required: true
+      tags:
+        - authentication
+    parameters: []
+  '/change/password/':
+    post:
+      description: ''
+      summary: "Password change using reset link"
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  user:
+                    type: array
+                    example:
+                      - Change password sussesfull
+
+      requestBody:
+        content:
+          application/json:
+              schema:
+                properties:
+                  email:
+                    type: string
+                    example: user@example.com
+                  password:
+                    type: string
+                    example: gh456dw436
+                  pin:
+                    type: string
+                    example: 356785
+
+        required: true
+      tags:
+        - authentication
+    parameters: []
+  '/confirmation/':
+    post:
+      description: ''
+      summary: "Confirmation of user registered for the first time"
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  user:
+                    type: array
+                    example:
+                      - Email confirmated sussesfull
+
+      requestBody:
+        content:
+          application/json:
+              schema:
+                properties:
+                  email:
+                    type: string
+                    example: user@example.com
+                  token:
+                    type: string
+                    example: gfwhooytrrhhuuiiokjg
+
+        required: true
+      tags:
+        - authentication
+    parameters: []
+  '/users/':
+    get:
+      operationId: users_list
+      description: ''
+      summary: "List of all users"
+      parameters:
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                required:
+                  - count
+                  - results
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  next:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous:
+                    type: string
+                    format: uri
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      properties:
+                        email:
+                          type: string
+                          example: user@example.com
+                        username:
+                          type: string
+                          example: user
+                        first_name:
+                          type: string
+                          example: pepe
+                        last_name:
+                          type: string
+                          example: trueno
+                        picture:
+                          type: string
+                          example: https://avatar.jpg
+                        phone:
+                          type: string
+                          example: "+584126546783"
+                        about_me:
+                          type: string
+                          example: Lorem ipsum dolor sit amet
+                        web_site:
+                          type: string
+                          example: http://www.alex12.com
+                        facebook:
+                          type: string
+                        twitter:
+                          type: string
+                        instagram:
+                          type: string
+                        continental_region:
+                          type: integer
+                        country:
+                          type: integer
+                        city:
+                          type: integer
+                        id:
+                          type: integer
+                        is_superuser:
+                          type: boolean
+                        is_active:
+                          type: boolean
+                        avatar:
+                          type: string
+                          example: https://avatar.jpg
+                        groups:
+                          type: array
+                          example:
+                            - 1
+                            - 2
+                        permissions:
+                          type: object
+                          properties:
+                            publication:
+                              items:
+                                type: array
+                                example:
+                                  - get
+                                  - post
+                            experience:
+                              items:
+                                type: array
+                                example:
+                                  - get
+                                  - post
+                                  - put
+      tags:
+        - users
+    post:
+      description: ''
+      summary: "User registration from the admin dashboard"
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  username:
+                    type: string
+                    example: user_test
+                  email:
+                    type: string
+                    example: user@example.com
+                  first_name:
+                    type: string
+                    example: beto
+                  last_name:
+                    type: string
+                    example: asabe
+                  groups:
+                    type: array
+                    example:
+                      - 1
+                  password:
+                    type: string
+                    example: dreamaway123456
+                    items: {}
+      requestBody:
+        content:
+          application/json:
+              schema:
+                properties:
+                  username:
+                    type: string
+                    example: user_test
+                  email:
+                    type: string
+                    example: user@example.com
+                  first_name:
+                    type: string
+                    example: beto
+                  last_name:
+                    type: string
+                    example: asabe
+                  groups:
+                    type: array
+                    example:
+                      - 1
+                  password:
+                    type: string
+                    example: dreamaway123456
+                    items: {}
+        required: true
+      tags:
+        - users
+    parameters: []
+  '/users/register/':
+    post:
+      operationId: users_register_create
+      description: ''
+      summary: "User registration from the PWA"
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCreate'
+      tags:
+        - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+        required: true
+    parameters: []
+  '/users/password/':
+    post:
+      description: ''
+      summary: "Password change from user dashboard"
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  code:
+                    type: int
+                    example: 200
+                  message:
+                    type: string
+                    example: Password updated successfully
+
+      requestBody:
+        content:
+          application/json:
+              schema:
+                properties:
+                  old_password:
+                    type: string
+                    example: dreamaway123456
+                  new_password:
+                    type: string
+                    example: adsfe4453ggghhh
+        required: true
+      tags:
+        - users
+    parameters: []
+  '/users/help/':
+    post:
+      description: ''
+      summary: "Communication with support"
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  users:
+                    type: array
+                    example:
+                      - Email send sussesfull
+
+      requestBody:
+        content:
+          application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    example: my message
+        required: true
+      tags:
+        - users
+    parameters: []
+  '/users/{id}/':
+    get:
+      operationId: users_read
+      description: ''
+      summary: "Get user data from admin dashboard"
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  email:
+                    type: string
+                    example: user@example.com
+                  username:
+                    type: string
+                    example: user
+                  first_name:
+                    type: string
+                    example: pepe
+                  last_name:
+                    type: string
+                    example: trueno
+                  picture:
+                    type: string
+                    example: https://avatar.jpg
+                  phone:
+                    type: string
+                    example: "+584126546783"
+                  about_me:
+                    type: string
+                    example: Lorem ipsum dolor sit amet
+                  web_site:
+                    type: string
+                    example: http://www.alex12.com
+                  facebook:
+                    type: string
+                  twitter:
+                    type: string
+                  instagram:
+                    type: string
+                  continental_region:
+                    type: integer
+                  country:
+                    type: integer
+                  city:
+                    type: integer
+                  id:
+                    type: integer
+                  is_superuser:
+                    type: boolean
+                  is_active:
+                    type: boolean
+                  avatar:
+                    type: string
+                    example: https://avatar.jpg
+                  groups:
+                    type: array
+                    example:
+                      - 1
+                      - 2
+                  permissions:
+                    type: object
+                    properties:
+                      publication:
+                        items:
+                          type: array
+                          example:
+                            - get
+                            - post
+                      experience:
+                        items:
+                          type: array
+                          example:
+                            - get
+                            - post
+                            - put
+      tags:
+        - users
+    put:
+      operationId: users_delete
+      description: ''
+      summary: "Update user data from admin dashboard"
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  users:
+                    type: array
+                    example:
+                      - user successfully updated
+      tags:
+        - users
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this user.
+        required: true
+        schema:
+          type: integer
+  '/locations/continentalregions/':
+    get:
+      description: ''
+      summary: "Get all Continental Regions"
+      parameters:
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                required:
+                  - count
+                  - results
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  next:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous:
+                    type: string
+                    format: uri
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: Europa
+                        geoname:
+                          type: string
+
+      tags:
+        - locations
+  '/locations/continentalregions/{id}/countries/':
+    get:
+      description: ''
+      summary: "Get countries from continental region"
+      parameters:
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: Europa
+                    geoname:
+                      type: string
+                      example: 2510769
+                    code:
+                      type: string
+                      example: ES
+                    phone:
+                      type: string
+                      example: 34
+                    continentalregion_id:
+                      type: integer
+                      example: 6                  
+
+      tags:
+        - locations
+
+  '/locations/countries/':
+    get:
+      description: ''
+      summary: "Get all countries"
+      parameters:
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                required:
+                  - count
+                  - results
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  next:
+                    type: string
+                    format: uri
+                    nullable: true
+                  previous:
+                    type: string
+                    format: uri
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: España
+                        geoname:
+                          type: string
+                          example: 2510769
+                        code:
+                          type: string
+                          example: ES
+                        phone:
+                          type: string
+                          example: 34
+                        continentalregion_id:
+                          type: integer
+                          example: 6
+
+      tags:
+        - locations
+
+  '/locations/contries/{id}/cities/':
+    get:
+      description: ''
+      summary: "Get cities from country"
+      parameters:
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: Madrid
+                    geoname:
+                      type: string
+                      example: 2510769
+                    country_id:
+                      type: integer
+                      example: 6                  
+
+      tags:
+        - locations
+
+servers:
+  - url: /api
+components:
+  requestBodies:
+    UserUpdate:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserUpdate'
+      required: true
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic
+  schemas:
+    ContinentalRegionModel:
+      required:
+        - name
+        - geoname
+      type: object
+      properties:
+        id:
+          title: ID
+          type: integer
+          readOnly: true
+        name:
+          title: Name
+          type: string
+          maxLength: 128
+          minLength: 1
+        geoname:
+          title: Geoname
+          type: string
+          maxLength: 16
+          minLength: 1
+    CountryModel:
+      required:
+        - name
+        - geoname
+        - code
+        - phone
+        - continentalregion
+      type: object
+      properties:
+        id:
+          title: ID
+          type: integer
+          readOnly: true
+        name:
+          title: Name
+          type: string
+          maxLength: 128
+          minLength: 1
+        geoname:
+          title: Geoname
+          type: string
+          maxLength: 16
+          minLength: 1
+        code:
+          title: Code
+          type: string
+          maxLength: 8
+          minLength: 1
+        phone:
+          title: Phone
+          type: string
+          maxLength: 12
+          minLength: 1
+        continentalregion:
+          title: Continentalregion
+          type: integer
+    MyTokenObtainPair:
+      required:
+        - username
+        - password
+      type: object
+      properties:
+        username:
+          title: Username
+          type: string
+          minLength: 1
+        password:
+          title: Password
+          type: string
+          minLength: 1
+    TokenRefresh:
+      required:
+        - refresh
+      type: object
+      properties:
+        refresh:
+          title: Refresh
+          type: string
+          minLength: 1
+    AuthenticatedUser:
+      required:
+        - username
+      type: object
+      properties:
+        email:
+          title: Dirección de correo electrónico
+          type: string
+          format: email
+          maxLength: 254
+        username:
+          title: Nombre de usuario
+          description: >-
+            Requerido. 150 carácteres como máximo. Únicamente letras, dígitos y
+            @/./+/-/_ 
+          type: string
+          pattern: '^[\w.@+-]+$'
+          maxLength: 150
+          minLength: 1
+        first_name:
+          title: Nombre
+          type: string
+          maxLength: 30
+        last_name:
+          title: Apellidos
+          type: string
+          maxLength: 150
+        picture:
+          title: Picture
+          type: string
+          readOnly: true
+          format: uri
+          nullable: true
+        phone:
+          title: Phone
+          type: string
+          maxLength: 128
+        about_me:
+          title: About me
+          type: string
+          maxLength: 400
+        web_site:
+          title: Web site
+          type: string
+          format: uri
+          maxLength: 250
+        facebook:
+          title: Facebook
+          type: string
+          maxLength: 32
+        twitter:
+          title: Twitter
+          type: string
+          maxLength: 32
+        instagram:
+          title: Instagram
+          type: string
+          maxLength: 32
+        continental_region:
+          title: Continental region
+          type: integer
+          nullable: true
+        country:
+          title: Country
+          type: integer
+          nullable: true
+        city:
+          title: City
+          type: integer
+          nullable: true
+        id:
+          title: ID
+          type: integer
+          readOnly: true
+        is_superuser:
+          title: Es superusuario
+          description: >-
+            Indica que este usuario tiene todos los permisos sin asignárselos
+            explícitamente.
+          type: boolean
+          readOnly: true
+        is_active:
+          title: Activo
+          description: >-
+            Indica si el usuario debe ser tratado como activo. Desmarque esta
+            opción en lugar de borrar la cuenta.
+          type: boolean
+          readOnly: true
+    UserCreate:
+      required:
+        - username
+        - password
+      type: object
+      properties:
+        username:
+          title: Nombre de usuario
+          description: >-
+            Requerido. 150 carácteres como máximo. Únicamente letras, dígitos y
+            @/./+/-/_ 
+          type: string
+          pattern: '^[\w.@+-]+$'
+          maxLength: 150
+          minLength: 1
+        email:
+          title: Dirección de correo electrónico
+          type: string
+          format: email
+          maxLength: 254
+        password:
+          title: Contraseña
+          type: string
+          maxLength: 128
+          minLength: 1
+    UserDetail:
+      required:
+        - password
+        - username
+      type: object
+      properties:
+        id:
+          title: ID
+          type: integer
+          readOnly: true
+        password:
+          title: Contraseña
+          type: string
+          maxLength: 128
+          minLength: 1
+        last_login:
+          title: Último inicio de sesión
+          type: string
+          format: date-time
+          nullable: true
+        is_superuser:
+          title: Es superusuario
+          description: >-
+            Indica que este usuario tiene todos los permisos sin asignárselos
+            explícitamente.
+          type: boolean
+        username:
+          title: Nombre de usuario
+          description: >-
+            Requerido. 150 carácteres como máximo. Únicamente letras, dígitos y
+            @/./+/-/_ 
+          type: string
+          pattern: '^[\w.@+-]+$'
+          maxLength: 150
+          minLength: 1
+        first_name:
+          title: Nombre
+          type: string
+          maxLength: 30
+        last_name:
+          title: Apellidos
+          type: string
+          maxLength: 150
+        email:
+          title: Dirección de correo electrónico
+          type: string
+          format: email
+          maxLength: 254
+        is_staff:
+          title: Es staff
+          description: Indica si el usuario puede entrar en este sitio de administración.
+          type: boolean
+        is_active:
+          title: Activo
+          description: >-
+            Indica si el usuario debe ser tratado como activo. Desmarque esta
+            opción en lugar de borrar la cuenta.
+          type: boolean
+        date_joined:
+          title: Fecha de alta
+          type: string
+          format: date-time
+        picture:
+          title: Picture
+          type: string
+          readOnly: true
+          format: uri
+          nullable: true
+        phone:
+          title: Phone
+          type: string
+          maxLength: 128
+        about_me:
+          title: About me
+          type: string
+          maxLength: 400
+        web_site:
+          title: Web site
+          type: string
+          format: uri
+          maxLength: 250
+        twitter:
+          title: Twitter
+          type: string
+          maxLength: 32
+        facebook:
+          title: Facebook
+          type: string
+          maxLength: 32
+        instagram:
+          title: Instagram
+          type: string
+          maxLength: 32
+        expert:
+          title: Expert
+          type: string
+          maxLength: 400
+        interests:
+          title: Interests
+          type: string
+          maxLength: 400
+        continental_region:
+          title: Continental region
+          type: integer
+          nullable: true
+        country:
+          title: Country
+          type: integer
+          nullable: true
+        city:
+          title: City
+          type: integer
+          nullable: true
+        user_type:
+          title: User type
+          type: integer
+          nullable: true
+        groups:
+          description: >-
+            Los grupos a los que pertenece este usuario. Un usuario tendrá todos
+            los permisos asignados a cada uno de sus grupos.
+          type: array
+          items:
+            title: Grupos
+            description: >-
+              Los grupos a los que pertenece este usuario. Un usuario tendrá
+              todos los permisos asignados a cada uno de sus grupos.
+            type: integer
+          uniqueItems: true
+        user_permissions:
+          description: Permisos específicos para este usuario.
+          type: array
+          items:
+            title: Permisos de usuario
+            description: Permisos específicos para este usuario.
+            type: integer
+          uniqueItems: true
+    UserUpdate:
+      required:
+        - username
+      type: object
+      properties:
+        username:
+          title: Nombre de usuario
+          description: >-
+            Requerido. 150 carácteres como máximo. Únicamente letras, dígitos y
+            @/./+/-/_ 
+          type: string
+          pattern: '^[\w.@+-]+$'
+          maxLength: 150
+          minLength: 1
+        first_name:
+          title: Nombre
+          type: string
+          maxLength: 30
+        last_name:
+          title: Apellidos
+          type: string
+          maxLength: 150
+        email:
+          title: Dirección de correo electrónico
+          type: string
+          format: email
+          maxLength: 254
+        picture:
+          title: Picture
+          type: string
+          readOnly: true
+          format: uri
+          nullable: true
+        phone:
+          title: Phone
+          type: string
+          maxLength: 128
+        about_me:
+          title: About me
+          type: string
+          maxLength: 400
+        continental_region:
+          title: Continental region
+          type: integer
+          nullable: true
+        country:
+          title: Country
+          type: integer
+          nullable: true
+        city:
+          title: City
+          type: integer
+          nullable: true
+        web_site:
+          title: Web site
+          type: string
+          format: uri
+          maxLength: 250
+        twitter:
+          title: Twitter
+          type: string
+          maxLength: 32
+        facebook:
+          title: Facebook
+          type: string
+          maxLength: 32
+        instagram:
+          title: Instagram
+          type: string
+          maxLength: 32
+        expert:
+          title: Expert
+          type: string
+          maxLength: 400
+        interests:
+          title: Interests
+          type: string
+          maxLength: 400 

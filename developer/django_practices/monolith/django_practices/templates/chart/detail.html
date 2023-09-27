@@ -1,0 +1,19 @@
+{% extends "base_dashboard.html" %}
+{% load staticfiles %}
+{% block content %}
+  {% include "sub_menu_configuration.html" %}
+    <div class="contenido">
+		<center>
+  <link href="{% static "css/bokeh-0.13.0.min.css" %}" rel="stylesheet">
+  <link href="{% static "css/bokeh-widgets-0.13.0.min.css" %}" rel="stylesheet">
+	<p>
+	    <a href="{% url "chartlist_view" %}">Regresar</a>
+	</p>
+	</center>
+
+  {{ div | safe }}
+</div>
+  <script src="{% static "js/bokeh-0.13.0.min.js" %}"></script>
+  <script src="{% static "js/bokeh-widgets-0.13.0.min.js" %}"></script>
+  {{ script | safe }}
+{% endblock %}

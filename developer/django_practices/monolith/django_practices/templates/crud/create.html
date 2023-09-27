@@ -1,0 +1,16 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+  {% include "sub_menu_configuration.html" %}
+    <div class="contenido">
+		<center>
+<h1>Crear Cursos</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <h3>formato de fecha:dd/mm/year h:m:sec</h3>
+    <h3>ejemplo: 08/01/2020 12:15:22</h3>
+    <input type="submit" value="Submit" />
+</form>
+</center>
+	   </div>
+{% endblock %}

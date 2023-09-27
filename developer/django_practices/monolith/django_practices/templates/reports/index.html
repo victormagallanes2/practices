@@ -1,0 +1,10 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+  {% include "sub_menu_configuration.html" %}
+    <div class="contenido">
+
+<center>
+  <a href="{% url 'wkhtmltopdf' %}"><input type="button" value="Download pdf"></a>
+   </center>
+	   </div> 
+{% endblock %}

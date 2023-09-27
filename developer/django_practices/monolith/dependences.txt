@@ -1,0 +1,17 @@
+Instalar redis
+
+sudo apt-get install redis-server
+
+Instalar memcached
+
+sudo apt-get install install memcached
+
+Instalar wkhtmltopdf
+
+sudo apt-get install wkhtmltopdf
+
+wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+
+tar xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
+
+sudo mv wkhtmltox/bin/wkhtmlto* /usr/local/bin

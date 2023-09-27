@@ -1,0 +1,14 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+  {% include "sub_menu_configuration.html" %}
+    <div class="contenido">
+		<center>
+	<h1>{{ course.name }}</h1>
+	<p>Fecha de inicio: <i>{{ course.start_date }}</i></p>
+	<p>Fecha de fin: <i>{{ course.end_date }}</i></p>
+	<p>
+	    <a href="{% url "list_course" %}">Regresar</a>
+	</p>
+	</center>
+	   </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all">
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body> 
+  <header>
+    <div class="navbar">
+      <a href="#" style="float: left;">{{ request.user }}</a>
+      <a href="{% url 'view_logout' %}" style="float: right;">Logout</a>
+<!--       <a href="#">Configuracion</a>
+      <a href="#">Website</a> -->
+    </div>
+  </header>
+  {% block content %}	
+  {% endblock %}  
+  <footer></footer>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+{% load cache %}
+<main>
+  {% include "sub_menu_configuration.html" %}
+    <div class="contenido">
+		<center>
+<h5>Vista cacheada</h5>
+{% cache 500 request.user.username %}
+<p>***Este texto esta chacheado***</p>
+{% endcache %}
+<p>Este texto no esta chacheado</p>
+<p>para borrar cache ejecutar echo 'flush_all' | nc localhost 11211</p>
+	    </center>
+    </div>
+</main> 
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base_dashboard.html" %}
+{% block content %}
+  {% include "sub_menu_configuration.html" %}
+    <div class="contenido">
+		<center>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+<p id="message"> {{ message }} </p>
+</center>
+	   </div>
+{% endblock %}
