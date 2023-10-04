@@ -18,3 +18,7 @@ Desintalar app con helm:
 Instalar aplicacion a partir de un archivo values.yaml
 
   helm install --debug --values druid/values.yaml druid druid
+
+Actualizar aplicacion o instalar si no existe:
+
+  helm upgrade --install --values eks/dev-values.yaml keycloak eks --force --wait
