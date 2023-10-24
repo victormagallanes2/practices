@@ -23,6 +23,7 @@ Configurar docker para no usar sudo:
   sudo service docker restart
 
 
+
 Instalar docker compose:
 
   sudo apt  install docker-compose
