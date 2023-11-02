@@ -25,10 +25,10 @@ terraform {
   }
 }
 
-#Modules
-# module "S3" {
-#     source = "./S3"
-# }
+Modules
+module "VPC" {
+    source = "./VPC"
+}
 
 
 
