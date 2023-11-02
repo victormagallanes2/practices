@@ -20,16 +20,19 @@ terraform {
     key = "company/terraform.tfstate"
     region = "eu-west-1"
     encrypt = true
-    dynamodb_table = "lock"
+    dynamodb_table = "terraform-locks"
     profile = "company"
   }
 }
 
-Modules
+#Modules
+
 module "VPC" {
     source = "./VPC"
 }
 
-
+module "SecurityGroup" {
+    source = "./SecurityGroup"
+}
 
 

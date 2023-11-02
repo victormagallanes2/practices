@@ -12,4 +12,5 @@ __pycache__/
 *db.sqlite3
 *settings.py
 **/migrations/**
-*.terraform_aws/
+*.terraform/
+.terraform.lock.hcl
