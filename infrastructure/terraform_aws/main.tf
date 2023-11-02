@@ -33,6 +33,12 @@ module "VPC" {
 
 module "SecurityGroup" {
     source = "./SecurityGroup"
+    public_subnet_id_a                  = module.VPC.public-eu-west-1a-id
+    public_subnet_id_b                  = module.VPC.public-eu-west-1b-id
+    private_subnet_id_a                 = module.VPC.private-eu-west-1a-id
+    private_subnet_id_b                 = module.VPC.private-eu-west-1b-id
+    vpc_id                              = module.VPC.vpc_id
+
 }
 
 
