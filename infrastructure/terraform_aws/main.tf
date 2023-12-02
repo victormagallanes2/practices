@@ -59,8 +59,8 @@ module "SecurityGroup" {
 #   ssh-access = module.SecurityGroup.ssh-access
 # }
 
-module "S3" {
-  source = "./S3"
-}
+# module "S3" {
+#   source = "./S3"
+# }
 
 
