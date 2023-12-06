@@ -23,6 +23,27 @@ Configurar docker para no usar sudo:
   sudo service docker restart
 
 
+Iniciar docker:
+
+  sudo systemctl start docker
+
+
+Detener docker:
+
+  sudo systemctl stop docker
+
+
+Reiniciar docker:
+
+  sudo systemctl restart docker
+
+
+Como hacer para que docker no inicie con arch linux:
+
+  sudo nano /usr/lib/systemd/system/docker.service
+ 
+En la linea donde dice Restart colocamos que no y listo
+
 
 Instalar docker compose:
 

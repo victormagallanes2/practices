@@ -3,16 +3,25 @@
 Instalar cliente de consola:
 
   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  
   unzip awscliv2.zip
+  
   sudo ./aws/install
 
 Configurar region por defecto:
 
-  Para que el cli de aws tome region por defecto se debe de crear una carpeta .aws y dentro colocar un archivo llamado config sin extension con el siguiente contenido:
+  Para que el cli de aws tome region por defecto se debe de crear una carpeta .aws y dentro colocar un archivo llamado config sin extension.
+  
+  mkdir .aws  
+  
+  nano .aws/config
+  
+Añadimos este contenido al archivo config:
 
   [default]
   region = eu-west-1
   output = json
+
 
 Crear credenciales en AWS para acceder a los recursos:
 
@@ -20,7 +29,11 @@ Se debe ingresar en IAM > Usuarios y crearlo, una vez creado mostrara un api id 
 
 Almacenar credenciales
 
-Para que el cli de aws tome un perfil por defecto con sus credenciales se debe de crear una carpeta .aws y dentro colocar un archivo llamado credentials sin extension con el siguiente formato:
+Para que el cli de aws tome un perfil por defecto con sus credenciales se debe de crear una carpeta .aws y dentro colocar un archivo llamado credentials sin extension
+
+  nano .aws/credentials
+
+Con el siguiente contenido:
 
   [default]
   aws_access_key_id = XXXXXXXXXXXX
