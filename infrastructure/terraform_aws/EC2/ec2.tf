@@ -1,15 +1,12 @@
 resource "aws_instance" "terraform-ec2" {
-  ami           = "ami-0097e4945b2d15c30"
-  instance_type = "t3.micro"
-
-  network_interface {
-    network_interface_id = aws_network_interface.foo.id
-    device_index         = 0
-  }
+  ami           = "ami-0ad8410c434dca64c"
+  instance_type = "t2.micro"
+  vpc_security_group_ids  = [var.ssh-access]
+  subnet_id = var.public_subnet_id_a
 
 
   tags = {
-    Name = "ubuntu20.04"
+    Name = "ubuntu22.04"
   }
 }
 
