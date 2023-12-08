@@ -2,14 +2,14 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "19.20.0"
 
-  cluster_name    = "my-eks"
+  cluster_name    = "my-cluster"
   cluster_version = "1.24"
 
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
 
-  vpc_id     = [var.vpc_id]
-  subnet_ids = [var.public_subnet_id_a,var.public_subnet_id_b, var.private_subnet_id_a,var.private_subnet_id_b]
+  vpc_id     = var.id_vpc
+  subnet_ids = [var.private_subnet_id_a,var.private_subnet_id_b]
 
   enable_irsa = true
 
@@ -45,7 +45,7 @@ module "eks" {
 
   }
 
-  fargate_profile = {
+  fargate_profiles = {
     fg-developers = {
         name = "fg-developers"
         selectors = [

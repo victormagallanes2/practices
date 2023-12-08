@@ -14,10 +14,7 @@ variable "private_subnet_id_b" {
     description = "public subnet"
 }
 
-variable "vpc_id" {
+variable "id_vpc" {
     description = "vpc id"
 }
 
-variable "rds_company" {
-    description = "rds company"
-}
