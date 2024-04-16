@@ -1,4 +1,4 @@
-# Las variables se usan para almacenar datos
+""" Las variables se usan para almacenar datos """
 
 string = 'Hola mundo'
 integer = 20

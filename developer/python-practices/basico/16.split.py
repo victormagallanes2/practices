@@ -1,7 +1,7 @@
-# La funcion split se usa para cortar o extraer cadena de caracteres
+""" La funcion split se usa para cortar o extraer cadena de caracteres
 
-# supiniendo que quiero generar un usuario unico tomando como base
-# el correo de un usuario
+suponiendo que quiero generar un usuario unico tomando como base
+el correo de un usuario """"
 
 email = "victormagallanes2@gmail.com"
 

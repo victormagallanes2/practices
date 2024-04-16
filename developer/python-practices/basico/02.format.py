@@ -1,4 +1,4 @@
-# El format se usa para asignar variables dinamicamente
+""" El format se usa para asignar variables dinamicamente """
 
 saludo = 'Hola mundo'
 altura = 1.60

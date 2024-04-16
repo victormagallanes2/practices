@@ -1,31 +1,3 @@
-# Kubernetes
-
-
-## MINIKUBE
-
-  Minikube se usa para instalar un clouster local usando una maquina virtual, asi que previamente se debe tener instalado virtualbox o cualquier otro.
-  
-Instalacion:
-
-  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-  sudo install minikube-linux-amd64 /usr/local/bin/minikube
-
-Comandos:
-
-  minikube start
-  minikube stop
-  minikube addons list
-
-Iniciar un segundo cluster:
-
-  minikube start -p cluster2
-
-Detener un segundo cluster:
-
-  minikube stop -p cluster2
-
-//////////////////////////////////////////////////////////////////////////////
-
 ## Instalar kubectl
 
 Descargar binario:

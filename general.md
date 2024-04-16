@@ -88,9 +88,11 @@ Instalacion:
 
   sudo apt install cron
 
-Se usa el comando crontab para generar un achivo el cual podemos añadir instrucciones:
+Se usa el comando crontab para invocar el gestor por consola y asi generar un achivo el cual podemos añadir instrucciones:
 
   crontab -e
+
+
 
 Al final de este archivo agregamos la instruccion:
 

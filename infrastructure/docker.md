@@ -3,9 +3,13 @@
 Instalar docker:
 
   sudo apt-get update
-  sudo apt-get install ca-certificates curl gnupg
+  
+  sudo apt-get install ca-certificates curl gnupg -y
+  
   sudo install -m 0755 -d /etc/apt/keyrings
+  
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  
   sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
   echo \
@@ -14,7 +18,8 @@ Instalar docker:
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   
   sudo apt-get update
-  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  
+  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 
 
 Configurar docker para no usar sudo:
@@ -47,7 +52,7 @@ En la linea donde dice Restart colocamos que no y listo
 
 Instalar docker compose:
 
-  sudo apt  install docker-compose
+  sudo apt  install docker-compose -y
 
 Detener todos los contenedores:
 
@@ -68,3 +73,9 @@ Eliminar todos los contenedores incluyendo volumenes:
 Eliminar todas las imagenes:
 
   docker rmi -f $(docker images -aq)
+  
+  
+Ingresar a un contenedor:
+
+
+  docker exec -i -t 69e937450dab bash

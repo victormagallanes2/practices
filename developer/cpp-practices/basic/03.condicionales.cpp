@@ -4,7 +4,8 @@ using namespace std;
 int main() 
 {
     int edad;
-    edad = 34;
+    std::cout << "¿Cuál es tu edad? ";
+    std::cin >> edad;
     if (edad >=18 and edad <= 40)
     {
         cout << "Estas joven" << endl;

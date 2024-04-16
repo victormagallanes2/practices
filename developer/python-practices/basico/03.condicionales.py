@@ -1,5 +1,5 @@
-"""Las condicionales se usan para ejecutar una instruccion
-   siempre y cuando cumpla con una condicion establecida."""
+""" Las condicionales se usan para ejecutar una instruccion
+   siempre y cuando cumpla con una condicion establecida. """
 
 edad = int(input("Ingrese su edad: "))
 # input sirve para ingresar parametros desde la consola
